@@ -14,15 +14,12 @@ public class ListNode {
         ListNode distinct = new ListNode(head.val);
         ListNode currentDistinct = distinct;
         while (currentOrigin.next != null) {
-            if (currentOrigin.val == currentOrigin.next.val) {
-                currentOrigin = currentOrigin.next;
-                continue;
+            if (currentOrigin.val != currentOrigin.next.val) {
+                currentDistinct.next = new ListNode(currentOrigin.next.val);
+                currentDistinct = currentDistinct.next;
             }
-            currentDistinct.next = new ListNode(currentOrigin.next.val);
-            currentDistinct = currentDistinct.next;
             currentOrigin = currentOrigin.next;
         }
-
         return distinct;
     }
 
